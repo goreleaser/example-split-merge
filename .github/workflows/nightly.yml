@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
         with:
-          go-version: 1.19
+          go-version: "1.26"
           cache: true
       - shell: bash
         run: |
@@ -53,7 +53,7 @@ jobs:
           args: release --clean --split ${{ env.flags }}
         env:
           GOOS: ${{ matrix.GOOS }}
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
   release:
     runs-on: ubuntu-latest
@@ -76,7 +76,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
         with:
-          go-version: 1.19
+          go-version: "1.26"
           cache: true
 
       # copy the cashes from prepare
@@ -105,5 +105,5 @@ jobs:
           version: latest
           args: continue --merge
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
